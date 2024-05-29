@@ -1,0 +1,44 @@
+[gd_scene load_steps=10 format=3 uid="uid://d0qxt5rilw3k7"]
+
+[ext_resource type="Script" path="res://scenes/main.cs" id="1_cibro"]
+[ext_resource type="Texture2D" uid="uid://cebmi6kshr14c" path="res://images/apple.png" id="2_5rbxe"]
+[ext_resource type="PackedScene" uid="uid://yrfp78yc0ruh" path="res://scenes/hud.tscn" id="2_btcdm"]
+[ext_resource type="Texture2D" uid="uid://ckgdmylonjyvq" path="res://images/purple.jpeg" id="3_rvcq0"]
+[ext_resource type="Texture2D" uid="uid://cn0fljgcdnkkt" path="res://images/berry.png" id="4_2etpt"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hhlhk"]
+texture = ExtResource("2_5rbxe")
+texture_region_size = Vector2i(50, 50)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ynem"]
+texture = ExtResource("3_rvcq0")
+texture_region_size = Vector2i(50, 50)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8oqxq"]
+texture = ExtResource("4_2etpt")
+texture_region_size = Vector2i(50, 50)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_4xwvv"]
+tile_size = Vector2i(50, 50)
+sources/1 = SubResource("TileSetAtlasSource_hhlhk")
+sources/2 = SubResource("TileSetAtlasSource_1ynem")
+sources/3 = SubResource("TileSetAtlasSource_8oqxq")
+
+[node name="Main" type="Node"]
+script = ExtResource("1_cibro")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(0, 100)
+tile_set = SubResource("TileSet_4xwvv")
+format = 2
+
+[node name="HUD" parent="." instance=ExtResource("2_btcdm")]
+
+[connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]

@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://bml04wkuxo2vg"]
+
+[ext_resource type="Script" path="res://scenes/GameOver.cs" id="1_0ax67"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xs806"]
+bg_color = Color(0.243137, 0.682353, 0.619608, 1)
+shadow_size = 5
+shadow_offset = Vector2(2, 2)
+
+[node name="GameOver" type="CanvasLayer" groups=["GameOverGroup"]]
+script = ExtResource("1_0ax67")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(500, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -150.0
+offset_right = 250.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xs806")
+
+[node name="GameOverLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.0
+offset_top = -97.0
+offset_right = 113.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Game Over!
+"
+
+[node name="NewGameButton" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 80)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = -9.0
+offset_right = 101.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "New Game"
+
+[connection signal="pressed" from="NewGameButton" to="." method="OnNewGameButtonPressed"]
